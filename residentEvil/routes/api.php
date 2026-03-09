@@ -5,7 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::post('/', [AuthController::class, 'register']);
+Route::post('/', [AuthController::class, 'Login']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/user',fn(Request $request)=>$request->user);
+
+   
+
 });
